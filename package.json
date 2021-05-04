@@ -1,0 +1,30 @@
+{
+  "name": "basic-api-server",
+  "version": "1.0.0",
+  "description": "├── .gitignore ├── .eslintrc.json ├── __tests__ │   ├── server.test.js │   ├── logger.test.js ├── src │   ├── error-handlers │   │   ├── 404.js │   │   ├── 500.js │   ├── middleware │   │   ├── logger.js │   │   ├── validator.js │   ├── models │   │   ├── food.js │   │   ├── clothes.js │   ├── routes │   │   ├── food.js │   │   ├── clothes.js │   ├── server.js ├── index.js └── package.json",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --coverage --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Musab-Al-omari/basic-api-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Musab-Al-omari/basic-api-server/issues"
+  },
+  "homepage": "https://github.com/Musab-Al-omari/basic-api-server#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
+  }
+}
