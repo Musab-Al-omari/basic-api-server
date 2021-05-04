@@ -9,14 +9,10 @@ const mockServer = supertest(server.app);
 
 describe('testing the server', () => {
   it('Handles bad route', async() => {
-    const response = await mockServer.get('/bad');
-    expect(response.status).toEqual(404);
+    const responseBad = await mockServer.get('/bad');
+    expect(responseBad.status).toEqual(404);
   });
 
-  it('Handles bad method', async() => {
-    const response = await mockServer.post('/');
-    expect(response.status).toEqual(404);
-  });
   it('be able to post a new thing', async() => {
     let anime = await mockServer.post('/anime').send({
       name: 'naruto',
@@ -27,23 +23,21 @@ describe('testing the server', () => {
     expect(anime.status).toEqual(201);
   });
 
-  //   it('to be able to get all item', async() => {
-  //     let getAnime = await mockServer.get('/anime');
+  it('to be able to get all item', async() => {
+    let getAnime = await mockServer.get('/anime');
+    console.log('body', getAnime.body[0].record.name);
+    expect(getAnime.body[0].record.name).toEqual('naruto');
+    expect(getAnime.body[0].record.level).toEqual(17);
+    expect(getAnime.status).toEqual(200);
+  });
 
-  //     // console.log('getAnime', getAnime.Response.res);
-  //     expect(getAnime).toEqual('naruto');
-  //     // expect(getAnime.body.record.level).toEqual(17);
-  //     // expect(getAnime.status).toEqual(201);
-  //   });
+  it('to be able to get one item', async() => {
+    let getAnime = await mockServer.get('/anime/1');
+    // console.log('why pls why ', getAnime.body);
+    expect(getAnime.body.record.name).toEqual('naruto');
+    expect(getAnime.status).toEqual(200);
 
-  //   it('to be able to get one item', async() => {
-  //     let getAnime = await mockServer.get('/anime/:id').send({ id: 1 });
-  //     let array = getAnime.res.text;
-
-  //     expect(array).toEqual("[{ 'id': 1, 'record': { 'name': 'naruto', 'level': 17 } }]");
-  //     // expect(getAnime.body.record.level).toEqual(17);
-  //     // expect(getAnime.status).toEqual(201);
-  //   });
+  });
 
   it('Update a record using PUT', async() => {
     let animeUpdate = await mockServer.put('/anime/1').send({
