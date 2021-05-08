@@ -2,7 +2,7 @@
 
 
 
-class Anime {
+class TV {
   constructor() {
     this.id = 0;
     this.dataBase = [];
@@ -50,4 +50,4 @@ class Anime {
 
   }
 }
-module.exports = Anime;
+module.exports = TV;
