@@ -5,11 +5,13 @@ const app = express();
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
 const logger = require('./middleware/looger.js');
-const animeRouter = require('./routes/routes.js');
+const animeManga = require('./routes/manga.js');
+const animeRouter = require('./routes/anime.js');
 // global middleware
 app.use(express.json());
 app.use(logger);
 // app.use(express.urlencoded({ extended: true }));
+app.use(animeManga);
 app.use(animeRouter);
 app.use(notFoundHandler);
 app.use(errorHandler);
